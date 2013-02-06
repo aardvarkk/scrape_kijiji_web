@@ -17,8 +17,6 @@ development:
   encoding: unicode
   database: scrape_kijiji_web_development
   pool: 5
-  username: scrape_kijiji_web
-  password:
 
   # Connect on a TCP socket. Omitted by default since the client uses a
   # domain socket that doesn't need configuration. Windows does not have
@@ -43,13 +41,9 @@ test:
   encoding: unicode
   database: scrape_kijiji_web_test
   pool: 5
-  username: scrape_kijiji_web
-  password:
 
 production:
   adapter: postgresql
   encoding: unicode
   database: scrape_kijiji_web_production
   pool: 5
-  username: scrape_kijiji_web
-  password:
