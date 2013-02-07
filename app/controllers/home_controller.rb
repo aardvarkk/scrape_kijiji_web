@@ -1,7 +1,13 @@
 class HomeController < ApplicationController
 
   def index
-  	@rentals = Rental.order("pubdate DESC").limit(10).all
+  	@listings = Rental.order("pubdate DESC").all
+  	@newest = @listings.first(10)
+
+  	respond_to do |format|
+      format.html
+      format.js { render :js => @listings.to_json }
+    end
   end
 
   def map
