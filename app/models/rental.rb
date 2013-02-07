@@ -1,3 +1,5 @@
+require 'net/http'
+
 class Rental < ActiveRecord::Base
   attr_accessible :description, :link, :price, :pubdate, :title
 
@@ -12,6 +14,8 @@ class Rental < ActiveRecord::Base
 		  rtl.pubdate = r['date']
 		  rtl.title = r['title']
 		  rtl.save
+		  rtl.touch # Updateds updated_at
+		  # puts "Updated #{rtl.link}"
 		end
   end
 

@@ -1,10 +1,7 @@
-require 'net/http'
-
 class HomeController < ApplicationController
 
   def index
-  	Rental.update_all
-  	@rentals = Rental.all
+  	@rentals = Rental.order("pubdate DESC").all
   end
 
 end
