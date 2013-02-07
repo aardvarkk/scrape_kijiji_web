@@ -1,3 +1,5 @@
-<pre>
-<%= @listings.to_yaml %>
-</pre>
+<% @rentals.each do |r| %>
+<p>
+<%= r.inspect %>
+</p>
+<% end %>
