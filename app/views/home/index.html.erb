@@ -1,5 +1,10 @@
+<%= link_to "Map", home_map_path %>
+
+<h1>Newest listings</h1>
+
 <% @rentals.each do |r| %>
 <p>
-<%= r.inspect %>
+<%= link_to r.title, r.link %>
+<%= r.price.to_s %>
 </p>
 <% end %>
