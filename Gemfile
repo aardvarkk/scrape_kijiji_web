@@ -40,3 +40,12 @@ gem 'capistrano'
 
 # To use debugger
 # gem 'debugger'
+
+# Use Nokogiri for HTML parsing
+gem 'nokogiri'
+
+# For better errors
+group :development do
+  gem "better_errors"
+  gem "binding_of_caller"
+end

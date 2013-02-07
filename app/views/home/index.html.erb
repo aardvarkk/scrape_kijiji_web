@@ -4,7 +4,8 @@
 
 <% @rentals.each do |r| %>
 <p>
-<%= link_to r.title, r.link %>
-<%= r.price.to_s %>
+<%= link_to r.title, r.link %><br/>
+Price: <%= r.price.to_s %><br/>
+Lat: <%= r.lat %>, Lon: <%= r.lon %>
 </p>
 <% end %>
