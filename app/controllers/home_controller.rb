@@ -13,4 +13,9 @@ class HomeController < ApplicationController
   def map
   end
 
+  def full
+  	@listings = Rental.order("pubdate DESC").all
+    @avg = Rental.average(:price)
+  end
+
 end

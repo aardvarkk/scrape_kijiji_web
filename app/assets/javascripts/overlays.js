@@ -97,7 +97,7 @@ function drawOverlays(map, centre, listings) {
 						squares[i + blocks][j + blocks].max = price;
 					}						 
 
-					squares[i + blocks][j + blocks].sum += price;
+					squares[i + blocks][j + blocks].sum += parseFloat(price);
 					squares[i + blocks][j + blocks].num++;
 				}
 			}
@@ -116,7 +116,12 @@ function drawOverlays(map, centre, listings) {
 			if(squares[i + blocks][j + blocks].num > 0) {
 
 				// calculate an average value
-				squares[i + blocks][j + blocks].avg = squares[i + blocks][j + blocks].sum / squares[i + blocks][j + blocks].num;
+				avg = squares[i + blocks][j + blocks].sum / squares[i + blocks][j + blocks].num;
+				if (isNaN(avg)) {
+					alert(squares[i + blocks][j + blocks].sum);
+					alert(squares[i + blocks][j + blocks].num);
+				}
+				squares[i + blocks][j + blocks].avg = avg;
 
 				attachWindow(
 					map, 

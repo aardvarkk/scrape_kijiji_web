@@ -4,7 +4,7 @@ window.onload = function() {
 
 	var myOptions = {
 		center : myLatlng,
-		zoom : 15,
+		zoom : 14,
 		mapTypeId : google.maps.MapTypeId.ROADMAP
 	};
 

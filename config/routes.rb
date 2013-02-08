@@ -1,5 +1,6 @@
 ScrapeKijijiWeb::Application.routes.draw do
   get "home/index"
+  get "home/full"
   get "home/map"
   
   # The priority is based upon order of creation:
