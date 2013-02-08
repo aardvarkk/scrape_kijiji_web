@@ -13,3 +13,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+//= require hsv_to_rgb
+//= require overlays
+//= require initialize
