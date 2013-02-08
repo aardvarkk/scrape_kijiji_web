@@ -1,10 +1,4 @@
 <%= render 'links' %>
 <h1>Newest Listings</h1>
-
-<% @newest.each do |r| %>
-<p>
-<%= link_to r.title, r.link %><br/>
-Price: <%= r.price.to_s %><br/>
-Lat: <%= r.lat %>, Lon: <%= r.lon %>
-</p>
-<% end %>
+<h2>Last Update: <%= time_ago_in_words(@updated) %> ago</h2>
+<%= render :partial => 'listings', :locals => { :listings => @newest } %>

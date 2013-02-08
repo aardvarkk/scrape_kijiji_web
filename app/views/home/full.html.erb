@@ -1,17 +1,4 @@
 <%= render 'links' %>
 <h1>All Listings</h1>
-
 <h2>Average Rent:<%= number_to_currency(@avg) %></h2>
-
-<table>
-	<tr>
-		<th>Price</th>
-		<th>Link</th>
-	</tr>
-<% @listings.each do |l| %>
-	<tr>
-		<td><%= l.price %></td>
-		<td><%= link_to l.title, l.link %></td>
-	</tr>
-<% end %>
-</table>
+<%= render :partial => 'listings', :locals => { :listings => @listings } %>

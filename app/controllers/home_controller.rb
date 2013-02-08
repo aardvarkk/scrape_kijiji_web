@@ -1,13 +1,8 @@
 class HomeController < ApplicationController
 
   def index
-  	@listings = Rental.order("pubdate DESC").all
-  	@newest = @listings.first(10)
-
-  	respond_to do |format|
-      format.html
-      format.js { render :js => @listings.to_json }
-    end
+  	@newest = Rental.order("pubdate DESC").first(10)
+    @updated = Rental.maximum(:pubdate)
   end
 
   def map
@@ -16,6 +11,11 @@ class HomeController < ApplicationController
   def full
   	@listings = Rental.order("pubdate DESC").all
     @avg = Rental.average(:price)
+
+    respond_to do |format|
+      format.html
+      format.js { render :js => @listings.to_json }
+    end
   end
 
 end

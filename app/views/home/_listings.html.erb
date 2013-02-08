@@ -1,0 +1,12 @@
+<table>
+	<tr>
+		<th>Price</th>
+		<th>Link</th>
+	</tr>
+<% listings.each do |l| %>
+	<tr>
+		<td><%= l.price %></td>
+		<td><%= link_to l.title, l.link %></td>
+	</tr>
+<% end %>
+</table>
