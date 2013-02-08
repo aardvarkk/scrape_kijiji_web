@@ -1,6 +1,7 @@
 require 'net/http'
 require 'nokogiri'
 require 'open-uri'
+require 'money'
 
 class Rental < ActiveRecord::Base
   attr_accessible :description, :link, :price, :pubdate, :title, :address, :lat, :lon
@@ -27,10 +28,14 @@ class Rental < ActiveRecord::Base
 			# Basics
 			rtl = Rental.find_or_create_by_link(r['link'])
 			rtl.description = r['description']
-		  rtl.price = r['title'].partition('$')[2]
 		  rtl.pubdate = r['date']
 		  rtl.title = r['title']
 
+		  # Get price -- we check that there is a valid separator (index 1)
+		  # And if so, take the second part (the actual dollar value)
+		  price_part = r['title'].rpartition('$')
+		  rtl.price = price_part[1].present? ? Money.parse(price_part[2]) : nil
+		  
 		  # Geocoding stuff
 		  loc = get_latlon(r['link'])
 		  rtl.lat = loc[:lat]
