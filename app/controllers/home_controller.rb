@@ -2,7 +2,7 @@ class HomeController < ApplicationController
 
   def index
   	@newest = Rental.order("pubdate DESC").first(10)
-    @updated = Rental.maximum(:pubdate)
+    @updated = Rental.maximum(:updated_at)
   end
 
   def map
