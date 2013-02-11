@@ -1,0 +1,12 @@
+<%= render :partial => 'links' %>
+<h2>Link</h2>
+<%= link_to @listing.title, @listing.link %>
+<h2>Price</h2>
+<%= number_to_currency @listing.price %>
+<h2>Published</h2>
+<%= time_ago_in_words(@listing.pubdate) + ' ago' %>
+<h2>Active</h2>
+<%= @listing.active ? 'Yes' : 'No' %>
+<%= button_to 'Toggle', :action => 'toggle_active' %>
+<h2>Description</h2>
+<%= @listing.description %>

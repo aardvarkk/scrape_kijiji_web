@@ -1,12 +1,14 @@
 <table>
 	<tr>
+		<th>Active</th>
 		<th>Price</th>
 		<th>Link</th>
 	</tr>
 <% listings.each do |l| %>
 	<tr>
+		<td><%= l.active ? 'Yes' : 'No' %></td>
 		<td><%= l.price %></td>
-		<td><%= link_to l.title, l.link %></td>
+		<td><%= link_to l.title, rental_path(l) %></td>
 	</tr>
 <% end %>
 </table>

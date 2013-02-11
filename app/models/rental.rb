@@ -4,7 +4,11 @@ require 'open-uri'
 require 'money'
 
 class Rental < ActiveRecord::Base
-  attr_accessible :description, :link, :price, :pubdate, :title, :address, :lat, :lon
+
+  attr_accessible :description, :link, :price, :pubdate, :title, :address, :lat, :lon, :active
+
+  # Have a default scope so that we only look at active properties
+  default_scope where(:active => true)
 
   QUERY_BASE = 'http://guelph.kijiji.ca'
 	QUERY_URI = QUERY_BASE + '/f-SearchAdRss?AdType=2&CatId=36&Location=1700242'
