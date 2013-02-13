@@ -30,7 +30,7 @@ class Rental < ActiveRecord::Base
 		rentals['rss']['channel']['item'].each do |r|
 			
 			# Basics
-			rtl = Rental.find_or_create_by_link(r['link'])
+			rtl = Rental.unscoped.find_or_create_by_link(r['link'])
 			rtl.description = r['description']
 		  rtl.pubdate = r['date']
 		  rtl.title = r['title']
