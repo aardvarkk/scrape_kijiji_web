@@ -7,13 +7,15 @@ class RentalsController < ApplicationController
   end
 
   def full
-    # Go unscoped so that we get active and inactive
-  	@listings = Rental.unscoped.order("pubdate DESC")
-    @avg = Rental.average(:price)
-
     respond_to do |format|
-      format.html
-      format.js { render :js => Rental.all.to_json }
+      format.html {
+        # Go unscoped so that we get active and inactive
+        @listings = Rental.unscoped.order("pubdate DESC")
+        @avg = Rental.average(:price)
+      }
+      format.js { 
+        render :js => Rental.select([:lat, :lon, :price]).all.to_json 
+      }
     end
   end
 
